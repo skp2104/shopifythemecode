@@ -58,7 +58,7 @@
    //       }
    //   });
 
-
+  //   $('cart-items').on('change', function(){ alert('Cart updated'); });
 
   //Query the cart via AJAX API
    var cartContents = fetch(window.Shopify.routes.root + 'cart.js')
@@ -71,6 +71,6 @@
   cartContents.then(function(result){
     console.log(result.item_count); //and display the item count from result (promise is resolved)
   }, function(err){
-    console.log(err); (promise is rejected)
+    console.log(err); //(promise is rejected)
   })
 {% endjavascript %}
