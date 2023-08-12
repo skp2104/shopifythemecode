@@ -1,28 +1,28 @@
-{%  if cart.item_count < 5 %}
-  {%  assign needed_for_discount = 5 | minus: cart.item_count %}
-  <div class="alert page-width">
-    Add {{ needed_for_discount }} more product(s) to get 20% off on your order
+{% if cart.item_count < 5 %}
+  {% assign needed_for_discount = 5 | minus: cart.item_count %}
+  <div class="page-width">
+    <div class="alert">Add {{ needed_for_discount }} more product(s) to get 20% off on your order</div>
   </div>
-{%  endif %}
+{% endif %}
 
 {% schema %}
-  {
-   "name": "Liquid Object",
-    "settings": [
-      {
-        "id": "liquid-ref",
-        "type": "text",
-        "label": "Text box heading",
-        "default": "Title"
-      }
-    ],
-    "presets": [
-      {
-        "name": "Liquid Reference",
-        "category": "Reference"
-      }
-    ]
-  }
+{
+ "name": "Liquid Object",
+  "settings": [
+    {
+      "id": "liquid-ref",
+      "type": "text",
+      "label": "Text box heading",
+      "default": "Title"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Liquid Reference",
+      "category": "Reference"
+    }
+  ]
+}
 {% endschema %}
 
 {% stylesheet %}
