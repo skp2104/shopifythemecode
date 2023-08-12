@@ -2,7 +2,7 @@
   {% assign needed_for_discount = 5 | minus: cart.item_count %}
   <div class="page-width">
     <div class="alert warning">Add {{ needed_for_discount }} more product(s) to get 20% off on your order</div>
-    <div class="alert success">Add {{ needed_for_discount }} more product(s) to get 20% off on your order</div>
+    <div class="alert success">Add {{ needed_for_discount }} more product(s) to get 20% off on your orders</div>
   </div>
 {% endif %}
 
@@ -27,13 +27,13 @@
 {% endschema %}
 
 {% stylesheet %}
-      .alert.success {
-      background: #8bd478;;
-  }
     .alert.warning {
       background: #f8ffad;
   }
 
+    .alert.success {
+      background: #8bd478;;
+  }
     .alert{
           padding: 2rem;
       margin-top: 4rem;
