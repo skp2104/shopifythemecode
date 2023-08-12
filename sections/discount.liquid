@@ -45,25 +45,32 @@
 {% endstylesheet %}
 
 {% javascript %}
-   $('cart-items').on('change', function(){ alert('Cart updated'); });
+  //On Cart update Get Item count and update alert message
 
-   $.ajax({
-         type: 'GET',
-         url: '/cart.js',
-         cache: false,
-         dataType: 'json',
-         success: function(cart) {
-            console.log(cart.item_count)
-         }
-     });
 
+   // $.ajax({
+   //       type: 'GET',
+   //       url: '/cart.js',
+   //       cache: false,
+   //       dataType: 'json',
+   //       success: function(cart) {
+   //          console.log(cart.item_count)
+   //       }
+   //   });
+
+  //   $('cart-items').on('change', function(){ alert('Cart updated'); });
+
+  //Query the cart via AJAX API
    var cartContents = fetch(window.Shopify.routes.root + 'cart.js')
+     //grabbing the response as json
    .then(response => response.json())
+     //which returns a promise
    .then(data => { return data });
 
+  //Take the promise then get the result
   cartContents.then(function(result){
-    console.log(result.item_count);
+    console.log(result.item_count); //and display the item count from result (promise is resolved)
   }, function(err){
-    console.log(err);
+    console.log(err); (promise is rejected)
   })
 {% endjavascript %}
