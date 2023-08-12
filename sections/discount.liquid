@@ -1,7 +1,27 @@
+{%  if cart.item_count < 5 %}
+  {%  assign needed_for_discount = 5 | minus: cart.item_count %}
+  <div class="alert page-width">
+    Add {{ needed_for_discount }} more product(s) to get 20% off on your order
+  </div>
+{%  endif %}
+
 {% schema %}
   {
-    "name": "Section name",
-    "settings": []
+   "name": "Liquid Object",
+    "settings": [
+      {
+        "id": "liquid-ref",
+        "type": "text",
+        "label": "Text box heading",
+        "default": "Title"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Liquid Reference",
+        "category": "Reference"
+      }
+    ]
   }
 {% endschema %}
 
