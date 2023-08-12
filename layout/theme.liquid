@@ -9,30 +9,36 @@
     <link
       rel="preconnect"
       href="https://cdn.shopify.com"
-      crossorigin>
+      crossorigin
+    >
 
     {%- if settings.favicon != blank -%}
       <link
         rel="icon"
         type="image/png"
-        href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+        href="{{ settings.favicon | image_url: width: 32, height: 32 }}"
+      >
     {%- endif -%}
 
     {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
       <link
         rel="preconnect"
         href="https://fonts.shopifycdn.com"
-        crossorigin>
+        crossorigin
+      >
     {%- endunless -%}
 
     <title>
       {{ page_title }}
       {%- if current_tags %}
-        &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+        &ndash; tagged "{{ current_tags | join: ', ' }}"
+      {%- endif -%}
       {%- if current_page != 1 %}
-        &ndash; Page {{ current_page }}{% endif -%}
+        &ndash; Page {{ current_page -}}
+      {%- endif -%}
       {%- unless page_title contains shop.name %}
-        &ndash; {{ shop.name }}{% endunless -%}
+        &ndash; {{ shop.name -}}
+      {%- endunless -%}
     </title>
 
     {% if page_description %}
@@ -402,7 +408,8 @@
         as="font"
         href="{{ settings.type_body_font | font_url }}"
         type="font/woff2"
-        crossorigin>
+        crossorigin
+      >
     {%- endunless -%}
     {%- unless settings.type_header_font.system? -%}
       <link
@@ -410,7 +417,8 @@
         as="font"
         href="{{ settings.type_header_font | font_url }}"
         type="font/woff2"
-        crossorigin>
+        crossorigin
+      >
     {%- endunless -%}
 
     {%- if settings.predictive_search_enabled -%}
@@ -418,8 +426,15 @@
         rel="stylesheet"
         href="{{ 'component-predictive-search.css' | asset_url }}"
         media="print"
-        onload="this.media='all'">
+        onload="this.media='all'"
+      >
     {%- endif -%}
+
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.min.js"
+      integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+      crossorigin="anonymous"
+    ></script>
 
     <script>
       document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
@@ -431,7 +446,7 @@
 
   <body class="gradient">
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
-      {{ "accessibility.skip_to_text" | t }}
+      {{ 'accessibility.skip_to_text' | t }}
     </a>
 
     {%- if settings.cart_type == 'drawer' -%}
@@ -444,7 +459,8 @@
       id="MainContent"
       class="content-for-layout focus-none"
       role="main"
-      tabindex="-1">
+      tabindex="-1"
+    >
       {{ content_for_layout }}
     </main>
 
@@ -456,6 +472,8 @@
     </ul>
 
     <script>
+      
+      
       window.shopUrl = '{{ request.origin }}';
       window.routes = {
         cart_add_url: '{{ routes.cart_add_url }}',
@@ -482,6 +500,8 @@
         pauseSlideshow: `{{ 'sections.slideshow.pause_slideshow' | t }}`,
         playSlideshow: `{{ 'sections.slideshow.play_slideshow' | t }}`
       }
+
+
     </script>
 
     {%- if settings.predictive_search_enabled -%}
